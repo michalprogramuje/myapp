@@ -47,18 +47,18 @@ class App extends Component {
       curson: 'pointer'
     };
 
-    let personas = null;
+    let persons = null;
 
     if (this.state.showPersons) {
-      personas = (
+      persons = (
         <div>
-        {this.state.persons.map( (persona, index) => {
+        {this.state.persons.map( (person, index) => {
           return <Person
-            name = {persona.name}
-            age = {persona.age}
+            name = {person.name}
+            age = {person.age}
             click = {() => this.deletePersonHandler(index)}
-            key = {persona.id}
-            changed = {(() => this.nameChangedHandler(event, person.id)}) />
+            key = {person.id}
+            changed = {(event) => this.nameChangedHandler(event, person.id)} />
         })}
         </div>
       );
@@ -69,7 +69,7 @@ class App extends Component {
         <h1>No witam witam</h1>
         <p>Serdecznia</p>
         <button onClick={this.togglePersonsHandler}>Show/Hide</button>
-        {personas}
+        {persons}
       </div>
     );
   // return React.createElement('div', {className:'App'}, React.createElement('h1', null, 'Hi I\'m React App'))
