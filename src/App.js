@@ -40,11 +40,12 @@ class App extends Component {
   }
   render() {
     const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
+      backgroundColor: 'green',
+      color: 'white',
       border: '1px solid blue',
       padding: '8px',
-      curson: 'pointer'
+      font: 'inherit',
+      cursor: 'pointer'
     };
 
     let persons = null;
@@ -62,17 +63,20 @@ class App extends Component {
         })}
         </div>
       );
+
+      style.backgroundColor = 'red';
     }
 
     return (
       <div className="App">
         <h1>No witam witam</h1>
         <p>Serdecznia</p>
-        <button onClick={this.togglePersonsHandler}>Show/Hide</button>
+        <button
+        style={style}
+        onClick={this.togglePersonsHandler}>Show/Hide</button>
         {persons}
       </div>
     );
-  // return React.createElement('div', {className:'App'}, React.createElement('h1', null, 'Hi I\'m React App'))
   }
 }
 
