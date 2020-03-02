@@ -6,6 +6,8 @@ import AuthContext from '../../../context/auth-context'
 
 class Person extends Component {
 
+    static contextType = AuthContext;
+
     constructor(props) {
         super(props);
         this.inputElementRef = React.createRef();
@@ -14,23 +16,22 @@ class Person extends Component {
     componentDidMount() {
         // this.inputElement.focus();
         this.inputElementRef.current.focus();
+        console.log(this.context.authenticated)
     }
 
     render() {
         console.log('[Person.js] rendering...');
             return (
                 <Fragment>
-                    <AuthContext.Consumer>
-                        {(context) => {context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p>} }}
-                    </AuthContext.Consumer>
-                <p onClick ={this.props.click}>To jest {this.props.name} i ma {this.props.age} lat</p>
-                <p>{this.props.children}</p>
-                <input 
-                type= "text"
-                // ref = {(inputEl) => {this.inputElement = inputEl}}
-                ref = {this.inputElementRef}
-                onChange = {this.props.changed} 
-                value = {this.props.name} />
+                    {this.context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p>}
+                    <p onClick ={this.props.click}>To jest {this.props.name} i ma {this.props.age} lat</p>
+                    <p>{this.props.children}</p>
+                    <input
+                    type= "text"
+                    // ref = {(inputEl) => {this.inputElement = inputEl}}
+                    ref = {this.inputElementRef}
+                    onChange = {this.props.changed}
+                    value = {this.props.name} />
                 </Fragment>
         );
 }}

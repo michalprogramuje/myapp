@@ -19,6 +19,7 @@ class Persons extends PureComponent {
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate')
+        return null;
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -37,8 +38,8 @@ class Persons extends PureComponent {
             click={() => this.props.clicked(index)}
             key={person.id}
             changed={(event) => this.props.changed(event, person.id)}/>
-        );
-    })
+        )}
+    )
     )};
 
 };
